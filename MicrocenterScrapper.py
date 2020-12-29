@@ -7,7 +7,7 @@ from lxml import html
 
 class MicrocenterScrapper(object):
     def __init__(self):
-        user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0'
+        user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:84.0) Gecko/20100101 Firefox/84.0'
         self.header = {'User-Agent': user_agent}
         self.URLRequest = "https://www.microcenter.com/product/630285/amd-ryzen-5-5600x-vermeer-37ghz-6-core-am4-boxed-processor-with-wraith-stealth-cooler?storeid=181"
         self.NOTIFICATION_SOUND_PATH = "Notification/alarm-frenzy-493.mp3"
