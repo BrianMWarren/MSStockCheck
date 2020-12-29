@@ -16,7 +16,7 @@ class MicrocenterScrapper(object):
 
         while not self.inStock:
             self.CheckForStock()
-            sleep(10)
+            sleep(15)
 
     def CheckForStock(self):
         try:
