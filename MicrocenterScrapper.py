@@ -11,12 +11,11 @@ class MicrocenterScrapper(object):
         self.header = {'User-Agent': user_agent}
         self.URLRequest = "https://www.microcenter.com/product/630285/amd-ryzen-5-5600x-vermeer-37ghz-6-core-am4-boxed-processor-with-wraith-stealth-cooler?storeid=181"
         self.NOTIFICATION_SOUND_PATH = "Notification/alarm-frenzy-493.mp3"
-        self.PARTY_SOUND_PATH = "Notification/alarm-frenzy-493.mp3"
         self.inStock = False
 
         while not self.inStock:
             self.CheckForStock()
-            sleep(15)
+            sleep(30)
 
     def CheckForStock(self):
         try:
