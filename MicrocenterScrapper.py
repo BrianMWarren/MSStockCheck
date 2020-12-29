@@ -25,7 +25,7 @@ class MicrocenterScrapper(object):
                 print("at " + str(datetime.now()) +  " sock text is: " + str(stockText))
             if(str(stockText) != "Sold Out"):
                 self.inStock = True
-                print("######################################STOCK FOUND######################################")
+                print("at " + str(datetime.now()) + " ######################################STOCK FOUND######################################")
                 for num in range(10):
                     self.PlayAudio(self.NOTIFICATION_SOUND_PATH)
 
