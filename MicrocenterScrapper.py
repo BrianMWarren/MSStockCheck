@@ -49,7 +49,7 @@ class MicrocenterScrapper(object):
                         stockText = tree.xpath("/html/body/main/article/div[3]/div[1]/div[1]/div/div[2]/div[1]/p/span/text()")[0]
                     except:
                         stockText = "none"
-                        print("unexpected return from stock text location!")
+                        print("unexpected return from stock of " + self.ProductName[productNum] + "!")
                     
                     print("at " + str(datetime.now()) + " for " + self.ProductName[productNum] + " sock text is: " + str(stockText))
                     #Checks the text of the object, this hardcode string must be the exact sold out text
