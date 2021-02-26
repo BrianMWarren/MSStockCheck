@@ -47,6 +47,7 @@ class MicrocenterScrapper(object):
                     #the xpath of the text object in the HTML page that will be checked
                     try:
                         stockText = tree.xpath("/html/body/main/article/div[3]/div[1]/div[1]/div/div[2]/div[1]/p/span/text()")[0]
+                        stockText = stockText.lstrip()
                     except:
                         stockText = "none"
                         print("unexpected return from stock of " + self.ProductName[productNum] + "!")
