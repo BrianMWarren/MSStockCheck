@@ -3,6 +3,7 @@ from time import sleep
 from datetime import datetime
 from playsound import playsound
 from lxml import html
+import time
 
 
 class MicrocenterScrapper(object):
@@ -30,7 +31,7 @@ class MicrocenterScrapper(object):
         #location of the alert
         self.NOTIFICATION_SOUND_PATH = "Notification/alarm-frenzy-493.mp3"
         #sold out state of text
-        self.soldOutStockText = "Sold Out"
+        self.inStockText = "in stock"
         self.inStock = False
 
         #main function, sleep hardcode is the amount of seconds between refreshes
@@ -44,11 +45,15 @@ class MicrocenterScrapper(object):
                 with requests.get(self.URLRequests[productNum], headers=self.header) as url:
                     tree = html.fromstring(url.content)
                     #the xpath of the text object in the HTML page that will be checked
-                    stockText = tree.xpath("/html/body/main/article/div[3]/div[1]/div[1]/div/div[2]/div[1]/p/span/text()")[0]
+                    try:
+                        stockText = tree.xpath("/html/body/main/article/div[3]/div[1]/div[1]/div/div[2]/div[1]/p/span/text()")[0]
+                    except:
+                        stockText = "none"
+                        print("unexpected return from stock text location!")
                     
                     print("at " + str(datetime.now()) + " for " + self.ProductName[productNum] + " sock text is: " + str(stockText))
                     #Checks the text of the object, this hardcode string must be the exact sold out text
-                if(str(stockText) != self.soldOutStockText):
+                if(str(stockText).lower() in (self.inStockText)):
                     self.inStock = True
                     print("at " + str(datetime.now()) + " ######################################STOCK FOUND######################################")
                     print("For " + self.ProductName[productNum])
